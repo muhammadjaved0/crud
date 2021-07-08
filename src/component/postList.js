@@ -1,36 +1,35 @@
 import React, { useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getUser } from "../store/post/action/index";
+import { getPosts } from "../store/post/action/index";
 import Card from "react-bootstrap/Card";
-import ListGroup from "react-bootstrap/ListGroup";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import NewListModal from "./newListModal";
 const Crud = () => {
-  const users = useSelector((state) => state.user);
+  const posts = useSelector((state) => state.post);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getUser());
+    dispatch(getPosts());
   }, []);
 
   return (
     <>
+    <NewListModal/>
       <Container fluid>
-        <Row>
-          {users.users.map((user) => {
+        {console.log("here is posts" , posts)}
+         <Row className="justify-content-center">
+          {posts.posts.map((post) => {
             return (
-              <Col sm={2} md={3} lg={3} key={user.id}>
+              <Col md={post.id%2=== 0? 3 : 4} key={post.id} className="mb-4">
                 <Card
                   variant="primary"
-                  className="mb-4 shadow bg-white rounded"
+                  className="h-100 shadow bg-white rounded text-left"
                 >
-                  <Card.Header>{user.name}</Card.Header>
                   <Card.Body>
-                    <Card.Text>{user.email}</Card.Text>
-                    <Card.Text>{user.phone}</Card.Text>
-                    <Card.Text>{user.address.city}</Card.Text>
-                    <Card.Text>{user.address.street}</Card.Text>
+                    <Card.Text><h4>{post.title}</h4></Card.Text>
+                    <Card.Text>{post.body}</Card.Text>
                   </Card.Body>
                 </Card>
               </Col>

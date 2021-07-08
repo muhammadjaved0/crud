@@ -1,20 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useForm } from "react-hook-form";
 
 
-const NewUserModal = () => {
+const NewListModal = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const {
     register,
+    watch,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  const watchFields = watch(); 
+
+  useEffect(() => {
+     console.log("watchFields", watchFields);
+  }, [watchFields])
 
   const onSubmit = (data) => {
     console.log("our data", data);
@@ -24,7 +31,7 @@ const NewUserModal = () => {
       <Button className="mb-5" variant="primary" onClick={handleShow}>
         Add new user
       </Button>
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
           <Modal.Title>Please fill the form</Modal.Title>
         </Modal.Header>
@@ -41,8 +48,8 @@ const NewUserModal = () => {
             <div className="form-group submit">
                     <input
                       type="submit"
-                      value="Register"
-                      className="ps-btn ps-btn--fullwidth ps-btn--black"
+                      value="submit"
+                      className="btn btn-success btn-block"
                     />
                   </div>
           </Form>
@@ -52,4 +59,4 @@ const NewUserModal = () => {
   );
 };
 
-export default NewUserModal;
+export default NewListModal;

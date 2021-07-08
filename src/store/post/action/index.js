@@ -1,17 +1,17 @@
-export const GET_USER = "GET_USER";
-export const SET_USER = "SET_USER";
+export const GET_POST = "GET_POST";
+export const SET_POST = "SET_POST";
 
-export const getUser = () => {
-  console.log("get user action call");
+export const getPosts = () => {
+  console.log("get POST action call");
   return {
-    type: GET_USER,
+    type: GET_POST,
   };
 };
 
-export const setUser = (users) => {
+export const setPosts = (posts) => {
   console.log("set user action call");
   return {
-    type: SET_USER,
-    users,
+    type: SET_POST,
+    posts,
   };
 };

@@ -1,9 +1,9 @@
-import  userReducer from "./user";
+import  postReducer from "./post";
 import loggedReducer from "./isLogged";
 import { combineReducers } from "redux";
 
 const allReducers = combineReducers({
-    user : userReducer,
+    post : postReducer,
     isLogged : loggedReducer
 });
 

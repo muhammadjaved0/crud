@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Crud from "./component/userList";
+import Crud from "./component/postList";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
