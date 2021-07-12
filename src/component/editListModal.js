@@ -4,9 +4,10 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useForm } from "react-hook-form";
-import { addPosts } from "../store/post/action/index";
+import { editPosts } from "../store/post/action/index";
 
-const NewListModal = () => {
+const EditListModal = (props) => {
+    console.log("props id" , props.id)
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -26,15 +27,20 @@ const NewListModal = () => {
   // }, [watchFields])
 
   const onSubmit = (data) => {
+    const updatdData = {
+        ...data,
+        id: props.id
+    }
+    console.log("updatd data",updatdData);
     setShow(false);
     console.log("our data", data);
-    dispatch(addPosts(data));
+    dispatch(editPosts(updatdData));
   };
   console.log("run============");
   return (
     <>
       <Button className="mb-5" variant="primary" onClick={handleShow}>
-       Add new post
+       Edit post
       </Button>
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
@@ -59,15 +65,6 @@ const NewListModal = () => {
                 placeholder="Enter description"
               />
             </Form.Group>
-            <Form.Group controlId="formBasicEmail">
-              <Form.Label>userId</Form.Label>
-              <Form.Control
-                type="number"
-                {...register("userId", { required: true })}
-                type="number"
-                placeholder="Enter userId"
-              />
-            </Form.Group>
             <div className="form-group submit">
               <input
                 type="submit"
@@ -82,4 +79,4 @@ const NewListModal = () => {
   );
 };
 
-export default NewListModal;
+export default EditListModal;

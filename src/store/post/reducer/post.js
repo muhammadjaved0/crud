@@ -1,5 +1,4 @@
-import { DELETE_POST, SET_POST } from "../action";
-import { ADD_POST } from "../action";
+import { SET_POST, ADD_POST, EDIT_POST, DELETE_POST } from "../action";
 
 const intialState = {
   posts: [],
@@ -20,6 +19,18 @@ const postReducer = (state = intialState, action) => {
       return {
         ...state,
         posts: [...state.posts, action.posts],
+      };
+    case EDIT_POST:
+      console.log("edit post reducers");
+      console.log("edit state", state);
+      debugger;
+      console.log("edit action", action.posts);
+      debugger;
+      return {
+        ...state,
+        posts: state.posts.map((post) => {
+          return post.id === action.posts.id ? action.posts : post;
+        }),
       };
     case DELETE_POST:
       // console.log("delete post reducers");

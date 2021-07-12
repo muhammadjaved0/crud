@@ -31,6 +31,30 @@ export async function addPostApi(posts) {
     console.error(error);
   }
 }
+export async function editPostApi(posts) {
+  console.log("here is edit body", posts);
+  debugger;
+  try {
+    const response = await axios.put(
+      "https://jsonplaceholder.typicode.com/posts/1",
+      {
+        body: { posts },
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      }
+    );
+    console.log("here is post responces", response);
+    debugger;
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+
+
+
 export async function deletePostsApi(posts) {
   console.log("delete post api run");
   debugger;

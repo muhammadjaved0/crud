@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getPosts , deletePosts } from "../store/post/action/index";
+import { getPosts , deletePosts} from "../store/post/action/index";
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import NewListModal from "./newListModal";
+import EditListModal from "./editListModal";
 import { Button } from "react-bootstrap";
 const Crud = () => {
   const posts = useSelector((state) => state.post);
@@ -22,13 +23,9 @@ const Crud = () => {
   dispatch(deletePosts(deleteId));
   console.log("delete runnning ================")
   }
-  const onEdit = (editId)=>{
-   console.log("post edited id =======" , editId)
-  }
-
   return (
     <>
-      <NewListModal />
+      <NewListModal title = "Add New Post"/>
       <Container fluid>
         {console.log("here is posts", posts)}
         <Row className="justify-content-center">
@@ -49,6 +46,7 @@ const Crud = () => {
                     </Card.Text>
                     <Card.Text>{post.body}</Card.Text>
                   </Card.Body>
+                  <EditListModal id = {post.id}/>
                   <Button onClick = {() => {onDelete(post.id)}}>DELETE POST</Button>
                 </Card>
               </Col>
