@@ -1,20 +1,30 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getPosts } from "../store/post/action/index";
+import { getPosts , deletePosts } from "../store/post/action/index";
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import NewListModal from "./newListModal";
+import { Button } from "react-bootstrap";
 const Crud = () => {
   const posts = useSelector((state) => state.post);
   console.log("post arry " , posts)
-  debugger
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getPosts());
   }, []);
+
+  const onDelete = (deleteId) => {
+  console.log("delete id===============",deleteId)
+  debugger
+  dispatch(deletePosts(deleteId));
+  console.log("delete runnning ================")
+  }
+  const onEdit = (editId)=>{
+   console.log("post edited id =======" , editId)
+  }
 
   return (
     <>
@@ -39,6 +49,7 @@ const Crud = () => {
                     </Card.Text>
                     <Card.Text>{post.body}</Card.Text>
                   </Card.Body>
+                  <Button onClick = {() => {onDelete(post.id)}}>DELETE POST</Button>
                 </Card>
               </Col>
             );
