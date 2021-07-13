@@ -39,6 +39,13 @@ const PostList = () => {
         Add new post
       </Button>
       <AddPost show={show} onCancel={handleClose} />
+      {loader ? (
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      ) : (
+        ""
+      )}
       <Container fluid>
         {console.log("here is posts", posts)}
         <Row className="justify-content-center ">
