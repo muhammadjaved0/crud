@@ -49,7 +49,7 @@ const PostList = () => {
       <Container fluid>
         {console.log("here is posts", posts)}
         <Row className="justify-content-center ">
-          {posts.posts.reverse().map((post) => {
+          {posts.posts.map((post) => {
             return (
               <Col
                 key={post.id}

@@ -16,8 +16,9 @@ import {
   EDIT_POST,
   editPost,
   DELETE_POST,
-  deletePost,
-  setPostsLoader
+  setRemovePost,
+  setPostsLoader,
+  updatePost
 
 } from "../action";
 
@@ -43,7 +44,7 @@ function* editPostSaga(payload) {
   console.log("here is edit payload", payload);
   const apiResponse = yield call(editPostApi, payload);
   console.log("edit api responces", apiResponse);
-  yield put(editPost(apiResponse.data.body));
+  yield put(updatePost(apiResponse.data.body));
   console.log("saga running");
 }
 
@@ -53,7 +54,7 @@ function* deletePostSaga(payload) {
   const apiResponse = yield call(deletePostApi, payload);
   console.log("delete api responce", apiResponse);
   debugger;
-  yield put(deletePost(apiResponse.data));
+  yield put(setRemovePost(apiResponse.data));
   console.log("deletePostsSaga running");
 }
 

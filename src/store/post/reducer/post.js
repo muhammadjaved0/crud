@@ -29,13 +29,13 @@ const postReducer = (state = intialState, action) => {
       return {
         ...state,
         posts: state.posts.map((post) => {
-          return post.id === action.posts.id ? action.posts : post;
+          return post.id === action.post.id ? action.post : post;
         }),
       };
     case DELETE_POST:
       return {
         ...state,
-        posts: state.posts.filter((post) => post.id !== action.posts),
+        posts: state.posts.filter((post) => post.id !== action.post),
       };
       case SET_LOADING:
       return {
