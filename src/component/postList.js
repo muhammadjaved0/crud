@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getPosts, deletePosts } from "../store/post/action/index";
+import { getPosts, deletePost } from "../store/post/action/index";
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -21,7 +21,7 @@ const Crud = () => {
   const onDelete = (deleteId) => {
     console.log("delete id===============", deleteId);
     debugger;
-    dispatch(deletePosts(deleteId));
+    dispatch(deletePost(deleteId));
     console.log("delete runnning ================");
   };
   return (
@@ -32,10 +32,9 @@ const Crud = () => {
         <Row className="justify-content-center ">
           {posts.posts.map((post) => {
             return (
-              <>
                 <Col
+                key={post.id}
                   md={post.id % 2 === 0 ? 3 : 4}
-                  key={post.id}
                   className="mb-4"
                 >
                   <Card
@@ -44,21 +43,20 @@ const Crud = () => {
                   >
                     <Card.Body>
                       <Card.Text className="d-flex justify-content-between">
-                        <h4>{post.title}</h4>
-                        <div className="float-right">
+                        {post.title}
+                        {/* <div className="float-right">
                           <EditListModal id={post.id} />
                           <RiDeleteBinLine color="blue" fontSize="1.1em"
                             onClick={() => {
                               onDelete(post.id);
                             }}
                           />
-                        </div>
+                        </div> */}
                       </Card.Text>
                       <Card.Text>{post.body}</Card.Text>
                     </Card.Body>
                   </Card>
                 </Col>
-              </>
             );
           })}
         </Row>

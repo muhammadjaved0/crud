@@ -13,7 +13,6 @@ export async function fetchPost() {
 
 export async function addPostApi(posts) {
   console.log("here is post body", posts);
-  debugger;
   try {
     const response = await axios.post(
       "https://jsonplaceholder.typicode.com/posts",
@@ -25,7 +24,6 @@ export async function addPostApi(posts) {
       }
     );
     console.log("here is post responces", response.data.body.posts);
-    debugger;
     return response;
   } catch (error) {
     console.error(error);
@@ -52,10 +50,7 @@ export async function editPostApi(posts) {
   }
 }
 
-
-
-
-export async function deletePostsApi(posts) {
+export async function deletePostApi(posts) {
   console.log("delete post api run");
   debugger;
   const response = await axios.delete(

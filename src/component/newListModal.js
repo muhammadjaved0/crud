@@ -4,7 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useForm } from "react-hook-form";
-import { addPosts } from "../store/post/action/index";
+import { addPost } from "../store/post/action/index";
 
 const NewListModal = () => {
   const [show, setShow] = useState(false);
@@ -28,7 +28,7 @@ const NewListModal = () => {
   const onSubmit = (data) => {
     setShow(false);
     console.log("our data", data);
-    dispatch(addPosts(data));
+    dispatch(addPost(data));
   };
   console.log("run============");
   return (

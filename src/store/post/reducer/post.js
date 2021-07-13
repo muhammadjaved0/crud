@@ -1,4 +1,4 @@
-import { SET_POST, ADD_POST, EDIT_POST, DELETE_POST } from "../action";
+import { SET_POSTS, ADD_POST, EDIT_POST, DELETE_POST } from "../action";
 
 const intialState = {
   posts: [],
@@ -7,10 +7,9 @@ const intialState = {
 const postReducer = (state = intialState, action) => {
   console.log("state", state);
   console.log("action", action);
-  debugger;
   console.log("post action dispatch");
   switch (action.type) {
-    case SET_POST:
+    case SET_POSTS:
       return {
         ...state,
         posts: action.posts,

@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useForm } from "react-hook-form";
-import { editPosts } from "../store/post/action/index";
+import { editPost } from "../store/post/action/index";
 import { FaRegEdit } from "react-icons/fa";
 
 
 const EditListModal = (props) => {
-    console.log("props id" , props.id)
+    // console.log("props id" , props.id)
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -36,9 +35,8 @@ const EditListModal = (props) => {
     console.log("updatd data",updatdData);
     setShow(false);
     console.log("our data", data);
-    dispatch(editPosts(updatdData));
+    dispatch(editPost(updatdData));
   };
-  console.log("run============");
   return (
     <>
       <FaRegEdit color="blue" fontSize="1.1em" onClick={handleShow}/>
