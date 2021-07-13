@@ -5,6 +5,8 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useForm } from "react-hook-form";
 import { editPosts } from "../store/post/action/index";
+import { FaRegEdit } from "react-icons/fa";
+
 
 const EditListModal = (props) => {
     console.log("props id" , props.id)
@@ -39,9 +41,7 @@ const EditListModal = (props) => {
   console.log("run============");
   return (
     <>
-      <Button className="mb-5" variant="primary" onClick={handleShow}>
-       Edit post
-      </Button>
+      <FaRegEdit color="blue" fontSize="1.1em" onClick={handleShow}/>
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
           <Modal.Title>Please fill the form</Modal.Title>
