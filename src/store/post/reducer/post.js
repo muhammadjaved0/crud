@@ -1,7 +1,8 @@
-import { SET_POSTS, ADD_POST, EDIT_POST, DELETE_POST } from "../action";
+import { SET_POSTS,SET_POST,ADD_POST,EDIT_POST, DELETE_POST,SET_LOADING } from "../action";
 
 const intialState = {
   posts: [],
+  loadingPosts: false
 };
 
 const postReducer = (state = intialState, action) => {
@@ -14,10 +15,10 @@ const postReducer = (state = intialState, action) => {
         ...state,
         posts: action.posts,
       };
-    case ADD_POST:
+    case SET_POST:
       return {
         ...state,
-        posts: [...state.posts, action.posts],
+        posts: [...state.posts, action.post.posts],
       };
     case EDIT_POST:
       console.log("edit post reducers");
@@ -32,14 +33,14 @@ const postReducer = (state = intialState, action) => {
         }),
       };
     case DELETE_POST:
-      // console.log("delete post reducers");
-      // console.log("delete state", state);
-      // debugger;
-      // console.log("delete action", action.posts);
-      // debugger;
       return {
         ...state,
         posts: state.posts.filter((post) => post.id !== action.posts),
+      };
+      case SET_LOADING:
+      return {
+        ...state,
+        loadingPosts: action.active,
       };
     default:
       return state;

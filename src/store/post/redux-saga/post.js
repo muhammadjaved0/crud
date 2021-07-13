@@ -9,26 +9,33 @@ import {
 import {
   GET_POSTS,
   setPosts,
+  setPost,
   ADD_POST,
+  SET_POST,
   addPost,
   EDIT_POST,
   editPost,
   DELETE_POST,
   deletePost,
+  setPostsLoader
+
 } from "../action";
 
 function* getPosts() {
+  yield put(setPostsLoader(true))
   const apiResponse = yield call(fetchPost);
   console.log("get api", apiResponse);
   yield put(setPosts(apiResponse.data));
+  yield put(setPostsLoader(false))
   console.log("saga running");
 }
 
 function* addPostSaga(payload) {
   console.log("here is payload", payload);
-  const apiResponse = yield call(addPostApi, payload);
+  const { post } = payload;
+  const apiResponse = yield call(addPostApi, post);
   console.log("post api", apiResponse);
-  yield put(addPost(apiResponse.data.body));
+  yield put(setPost(apiResponse.data.body));
   console.log("saga running");
 }
 

@@ -3,6 +3,9 @@ export const SET_POSTS = "SET_POSTS";
 export const ADD_POST = "ADD_POST";
 export const DELETE_POST = "DELETE_POST";
 export const EDIT_POST = "EDIT_POST";
+export const SET_POST = "SET_POST";
+export const SET_LOADING = "SET_LOADING";
+
 
 export const getPosts = () => {
   console.log("get POST action call");
@@ -19,13 +22,22 @@ export const setPosts = (posts) => {
   };
 };
 
-export const addPost = (posts) => {
-  console.log("add post action call" , posts);
+export const addPost = (post) => {
+  console.log("add post action call" , post);
   return {
     type: ADD_POST,
-    posts,
+    post,
   };
 };
+
+export const setPost = (post) => {
+  console.log("add post action call" , post);
+  return {
+    type: SET_POST,
+    post,
+  };
+};
+
 
 export const editPost = (posts) => {
   console.log("post"  , posts)
@@ -44,3 +56,12 @@ export const deletePost = (posts) => {
     posts,
   };
 };
+
+export const setPostsLoader = (active) => {
+  console.log("delete post action call");
+  return {
+    type: SET_LOADING,
+    active,
+  };
+};
+

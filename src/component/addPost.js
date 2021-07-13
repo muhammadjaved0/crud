@@ -24,6 +24,7 @@ const AddPost = ({show , onCancel}) => {
   const onSubmit = (data) => {
     console.log("our data", data);
     dispatch(addPost(data));
+    onCancel()
   };
   return (
     <>
