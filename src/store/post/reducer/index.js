@@ -1,10 +1,8 @@
-import  postReducer from "./post";
-import loggedReducer from "./isLogged";
+import postReducer from "./post";
 import { combineReducers } from "redux";
 
 const allReducers = combineReducers({
-    post : postReducer,
-    isLogged : loggedReducer
+  post: postReducer,
 });
 
 export default allReducers;
