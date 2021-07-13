@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect ,useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getPosts, deletePost } from "../store/post/action/index";
 import Card from "react-bootstrap/Card";
@@ -6,6 +6,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import AddPost from "./addPost";
+import Button from "react-bootstrap/Button";
 import EditPost from "./editPost";
 import { RiDeleteBinLine } from "react-icons/ri";
 
@@ -13,7 +14,9 @@ const PostList = () => {
   const posts = useSelector((state) => state.post);
   console.log("post arry ", posts);
   const dispatch = useDispatch();
-
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   useEffect(() => {
     dispatch(getPosts());
   }, []);
@@ -26,7 +29,10 @@ const PostList = () => {
   };
   return (
     <>
-      <AddPost title="Add New Post" />
+    <Button className="justify-content-center ml-5 mb-5" variant="primary" onClick={handleShow}>
+       Add new post
+      </Button>
+      <AddPost show={show} onCancel={handleClose}/>
       <Container fluid>
         {console.log("here is posts", posts)}
         <Row className="justify-content-center ">

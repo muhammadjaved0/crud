@@ -6,12 +6,8 @@ import Form from "react-bootstrap/Form";
 import { useForm } from "react-hook-form";
 import { addPost } from "../store/post/action/index";
 
-const AddPost = () => {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+const AddPost = ({show , onCancel}) => {
   const dispatch = useDispatch();
-
   const {
     register,
     watch,
@@ -26,17 +22,12 @@ const AddPost = () => {
   // }, [watchFields])
 
   const onSubmit = (data) => {
-    setShow(false);
     console.log("our data", data);
     dispatch(addPost(data));
   };
-  console.log("run============");
   return (
     <>
-      <Button className="mb-5 align-items-center" variant="primary" onClick={handleShow}>
-       Add new post
-      </Button>
-      <Modal show={show} onHide={handleClose} centered>
+      <Modal show={show} onHide = {onCancel} centered>
         <Modal.Header closeButton>
           <Modal.Title>Please fill the form</Modal.Title>
         </Modal.Header>
