@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, {useEffect } from "react";
 import { useDispatch } from "react-redux";
 import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useForm } from "react-hook-form";
 import { addPost } from "../store/post/action/index";
@@ -15,14 +14,12 @@ const AddPost = ({show , onCancel}) => {
     formState: { errors },
   } = useForm();
 
-  // const watchFields = watch();
+  const watchFields = watch();
 
-  // useEffect(() => {
-  //    console.log("watchFields", watchFields);
-  // }, [watchFields])
+  useEffect(() => {
+  }, [watchFields])
 
   const onSubmit = (data) => {
-    console.log("our data", data);
     dispatch(addPost(data));
     onCancel()
   };

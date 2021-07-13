@@ -6,9 +6,7 @@ import { useForm } from "react-hook-form";
 import { editPost } from "../store/post/action/index";
 import { FaRegEdit } from "react-icons/fa";
 
-
 const EditPost = (props) => {
-    // console.log("props id" , props.id)
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -21,26 +19,22 @@ const EditPost = (props) => {
     formState: { errors },
   } = useForm();
 
-  // const watchFields = watch();
+  const watchFields = watch();
 
-  // useEffect(() => {
-  //    console.log("watchFields", watchFields);
-  // }, [watchFields])
+  useEffect(() => {
+  }, [watchFields])
 
   const onSubmit = (data) => {
     const updatdData = {
-        ...data,
-        id: props.id
-    }
-    console.log("updatd data",updatdData);
+      ...data,
+      id: props.id,
+    };
     setShow(false);
-    console.log("our data", data);
     dispatch(editPost(updatdData));
-    
   };
   return (
     <>
-      <FaRegEdit color="blue" fontSize="1.1em" onClick={handleShow}/>
+      <FaRegEdit color="blue" fontSize="1.1em" onClick={handleShow} />
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
           <Modal.Title>Please fill the form</Modal.Title>

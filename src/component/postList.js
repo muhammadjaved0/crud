@@ -13,8 +13,6 @@ import { RiDeleteBinLine } from "react-icons/ri";
 const PostList = () => {
   const posts = useSelector((state) => state.post);
   const loader = useSelector((state) => state.post.loadingPosts);
-  console.log("here is loadder", loader);
-  console.log("post arry ", posts);
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -24,10 +22,7 @@ const PostList = () => {
   }, []);
 
   const onDelete = (deleteId) => {
-    console.log("delete id===============", deleteId);
-    debugger;
     dispatch(deletePost(deleteId));
-    console.log("delete runnning ================");
   };
   return (
     <>
@@ -40,14 +35,13 @@ const PostList = () => {
       </Button>
       <AddPost show={show} onCancel={handleClose} />
       {loader ? (
-        <div class="spinner-border" role="status">
-          <span class="sr-only">Loading...</span>
+        <div className="spinner-border" role="status">
+          <span className="sr-only">Loading...</span>
         </div>
       ) : (
         ""
       )}
       <Container fluid>
-        {console.log("here is posts", posts)}
         <Row className="justify-content-center ">
           {posts.posts.map((post) => {
             return (

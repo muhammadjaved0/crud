@@ -12,7 +12,6 @@ export async function fetchPost() {
 }
 
 export async function addPostApi(posts) {
-  console.log("here is post body", posts);
   try {
     const response = await axios.post(
       "https://jsonplaceholder.typicode.com/posts",
@@ -23,15 +22,12 @@ export async function addPostApi(posts) {
         },
       }
     );
-    console.log("here is post responces", response.data.body.posts);
     return response;
   } catch (error) {
     console.error(error);
   }
 }
 export async function editPostApi(posts) {
-  console.log("here is edit body", posts);
-  debugger;
   try {
     const response = await axios.put(
       "https://jsonplaceholder.typicode.com/posts/1",
@@ -42,8 +38,6 @@ export async function editPostApi(posts) {
         },
       }
     );
-    console.log("here is post responces", response);
-    debugger;
     return response;
   } catch (error) {
     console.error(error);
@@ -52,7 +46,6 @@ export async function editPostApi(posts) {
 
 export async function deletePostApi(posts) {
   console.log("delete post api run");
-  debugger;
   const response = await axios.delete(
     `https://jsonplaceholder.typicode.com/posts/${posts}`
   );

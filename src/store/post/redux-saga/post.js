@@ -11,10 +11,7 @@ import {
   setPosts,
   setPost,
   ADD_POST,
-  SET_POST,
-  addPost,
   EDIT_POST,
-  editPost,
   DELETE_POST,
   setRemovePost,
   setPostsLoader,
@@ -25,37 +22,24 @@ import {
 function* getPosts() {
   yield put(setPostsLoader(true))
   const apiResponse = yield call(fetchPost);
-  console.log("get api", apiResponse);
   yield put(setPosts(apiResponse.data));
   yield put(setPostsLoader(false))
-  console.log("saga running");
 }
 
 function* addPostSaga(payload) {
-  console.log("here is payload", payload);
   const { post } = payload;
   const apiResponse = yield call(addPostApi, post);
-  console.log("post api", apiResponse);
   yield put(setPost(apiResponse.data.body));
-  console.log("saga running");
 }
 
 function* editPostSaga(payload) {
-  console.log("here is edit payload", payload);
   const apiResponse = yield call(editPostApi, payload);
-  console.log("edit api responces", apiResponse);
   yield put(updatePost(apiResponse.data.body));
-  console.log("saga running");
 }
 
 function* deletePostSaga(payload) {
-  console.log("deletePostsSaga running");
-  debugger;
   const apiResponse = yield call(deletePostApi, payload);
-  console.log("delete api responce", apiResponse);
-  debugger;
   yield put(setRemovePost(apiResponse.data));
-  console.log("deletePostsSaga running");
 }
 
 function* rootSaga() {
