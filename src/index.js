@@ -5,7 +5,7 @@ import App from "./App";
 import createSagaMiddleware from "redux-saga";
 import reportWebVitals from "./reportWebVitals";
 import { createStore, applyMiddleware } from "redux";
-import rootSaga from "../src/store/post/redux-saga/saga";
+import rootSaga from "../src/store/post/redux-saga/post";
 import allReducer from "./store/post/reducer";
 import { Provider } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";

@@ -6,7 +6,7 @@ import Form from "react-bootstrap/Form";
 import { useForm } from "react-hook-form";
 import { addPost } from "../store/post/action/index";
 
-const NewListModal = () => {
+const AddPost = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -33,7 +33,7 @@ const NewListModal = () => {
   console.log("run============");
   return (
     <>
-      <Button className="mb-5" variant="primary" onClick={handleShow}>
+      <Button className="mb-5 align-items-center" variant="primary" onClick={handleShow}>
        Add new post
       </Button>
       <Modal show={show} onHide={handleClose} centered>
@@ -82,4 +82,4 @@ const NewListModal = () => {
   );
 };
 
-export default NewListModal;
+export default AddPost;

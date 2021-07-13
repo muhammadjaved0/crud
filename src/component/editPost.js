@@ -7,7 +7,7 @@ import { editPost } from "../store/post/action/index";
 import { FaRegEdit } from "react-icons/fa";
 
 
-const EditListModal = (props) => {
+const EditPost = (props) => {
     // console.log("props id" , props.id)
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -36,6 +36,7 @@ const EditListModal = (props) => {
     setShow(false);
     console.log("our data", data);
     dispatch(editPost(updatdData));
+    
   };
   return (
     <>
@@ -77,4 +78,4 @@ const EditListModal = (props) => {
   );
 };
 
-export default EditListModal;
+export default EditPost;

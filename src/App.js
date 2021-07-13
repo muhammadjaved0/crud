@@ -1,10 +1,10 @@
-import Crud from "./component/postList";
+import PostList from "./component/postList";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <div className="App mt-5 pt-5">
-      <Crud />
+      <PostList />
     </div>
   );
 }

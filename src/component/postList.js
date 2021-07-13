@@ -5,11 +5,11 @@ import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import NewListModal from "./newListModal";
-import EditListModal from "./editListModal";
+import AddPost from "./addPost";
+import EditPost from "./editPost";
 import { RiDeleteBinLine } from "react-icons/ri";
 
-const Crud = () => {
+const PostList = () => {
   const posts = useSelector((state) => state.post);
   console.log("post arry ", posts);
   const dispatch = useDispatch();
@@ -26,7 +26,7 @@ const Crud = () => {
   };
   return (
     <>
-      <NewListModal title="Add New Post" />
+      <AddPost title="Add New Post" />
       <Container fluid>
         {console.log("here is posts", posts)}
         <Row className="justify-content-center ">
@@ -45,7 +45,7 @@ const Crud = () => {
                       <Card.Text className="d-flex justify-content-between">
                         {post.title}
                         {/* <div className="float-right">
-                          <EditListModal id={post.id} />
+                          <EditPost id={post.id} />
                           <RiDeleteBinLine color="blue" fontSize="1.1em"
                             onClick={() => {
                               onDelete(post.id);
@@ -65,4 +65,4 @@ const Crud = () => {
   );
 };
 
-export default Crud;
+export default PostList;
