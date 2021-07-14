@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getPosts, deletePost } from "../store/post/action/index";
-import { Button} from 'antd';
+import { Button } from "antd";
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import AddPost from "./addPost";
 import EditPost from "./editPost";
-import { RiDeleteBinLine } from "react-icons/ri";
+import { DeleteOutlined } from "@ant-design/icons";
 
 const PostList = () => {
   const posts = useSelector((state) => state.post);
@@ -27,7 +27,7 @@ const PostList = () => {
   return (
     <>
       <Button
-        className="justify-content-center ml-5 mb-5"
+        className="justify-content-center ml-5 mb-4"
         type="primary"
         onClick={handleShow}
       >
@@ -35,7 +35,20 @@ const PostList = () => {
       </Button>
       <AddPost show={show} onCancel={handleClose} />
       {loader ? (
-        <div className="spinner-border" role="status">
+        <div
+          // style = {
+          //   {
+          //     position: "absolute",
+          //     left: "50%",
+          //     top: "35%",
+          //     height: "31px",
+          //     width: "31px"
+          // }
+
+          // }
+          className="spinner-border spinner-center h-31 w-31 l-50 t-50"
+          role="status"
+        >
           <span className="sr-only">Loading...</span>
         </div>
       ) : (
@@ -59,9 +72,8 @@ const PostList = () => {
                       {post.title}
                       <div className="float-right">
                         <EditPost id={post.id} />
-                        <RiDeleteBinLine
-                          color="blue"
-                          fontSize="1.1em"
+                        <DeleteOutlined
+                          style={{ fontSize: "1.1rem", color: "#FF0000" }}
                           onClick={() => {
                             onDelete(post.id);
                           }}

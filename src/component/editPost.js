@@ -4,7 +4,8 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import { useForm } from "react-hook-form";
 import { editPost } from "../store/post/action/index";
-import { FaRegEdit } from "react-icons/fa";
+import { EditOutlined } from '@ant-design/icons';
+  
 
 const EditPost = (props) => {
   const [show, setShow] = useState(false);
@@ -34,7 +35,7 @@ const EditPost = (props) => {
   };
   return (
     <>
-      <FaRegEdit color="blue" fontSize="1.1em" onClick={handleShow} />
+      <EditOutlined style={{ fontSize: '1.1rem', color: '#08c' }} onClick={handleShow} />
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
           <Modal.Title>Please fill the form</Modal.Title>
