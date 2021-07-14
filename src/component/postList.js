@@ -36,16 +36,6 @@ const PostList = () => {
       <AddPost show={show} onCancel={handleClose} />
       {loader ? (
         <div
-          // style = {
-          //   {
-          //     position: "absolute",
-          //     left: "50%",
-          //     top: "35%",
-          //     height: "31px",
-          //     width: "31px"
-          // }
-
-          // }
           className="spinner-border spinner-center h-31 w-31 l-50 t-50"
           role="status"
         >

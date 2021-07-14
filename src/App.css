@@ -1,0 +1,7 @@
+.spinner-center {
+  position: absolute;
+  left: 50%;
+  top: 35%;
+  height: 31px;
+  width: 31px;
+}

@@ -1,5 +1,6 @@
 import PostList from "./component/postList";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "./App.css";
 import 'antd/dist/antd.css';
 
 function App() {
