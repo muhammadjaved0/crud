@@ -1,52 +1,35 @@
 import {put, takeEvery, call} from "redux-saga/effects";
-import {
-  fetchPost,
-  addPostApi,
-  editPostApi,
-  deletePostApi,
-} from "../../../api/post";
-
-import {
-  GET_POSTS,
-  setPosts,
-  setPost,
-  ADD_POST,
-  EDIT_POST,
-  DELETE_POST,
-  setRemovePost,
-  setPostsLoader,
-  updatePost
-
-} from "../action";
+import * as api from "../../../api/post";
+import * as action from "../action";
 
 function* getPosts() {
-  yield put(setPostsLoader(true))
-  const apiResponse = yield call(fetchPost);
-  yield put(setPosts(apiResponse.data));
-  yield put(setPostsLoader(false))
+  yield put(action.setPostsLoader(true))
+  const apiResponse = yield call(api.fetchPost);
+  yield put(action.setPosts(apiResponse.data));
+  yield put(action.setPostsLoader(false))
 }
 
 function* addPostSaga(payload) {
   const { post } = payload;
-  const apiResponse = yield call(addPostApi, post);
-  yield put(setPost(apiResponse.data.body));
+  const apiResponse = yield call(api.addPostApi, post);
+  yield put(action.setPost(apiResponse.data.body));
 }
 
 function* editPostSaga(payload) {
-  const apiResponse = yield call(editPostApi, payload);
-  yield put(updatePost(apiResponse.data.body));
+  const apiResponse = yield call(api.editPostApi, payload);
+  yield put(action.updatePost(apiResponse.data.body));
 }
 
 function* deletePostSaga(payload) {
-  const apiResponse = yield call(deletePostApi, payload);
-  yield put(setRemovePost(apiResponse.data));
+  const apiResponse = yield call(api.deletePostApi, payload);
+  yield put(action.setRemovePost(apiResponse.data));
 }
 
 function* rootSaga() {
-  yield takeEvery(GET_POSTS, getPosts);
-  yield takeEvery(ADD_POST, addPostSaga);
-  yield takeEvery(EDIT_POST, editPostSaga);
-  yield takeEvery(DELETE_POST, deletePostSaga);
+  yield takeEvery(action.GET_POSTS, getPosts);
+  yield takeEvery(action.ADD_POST, addPostSaga);
+  yield takeEvery(action.EDIT_POST, editPostSaga);
+  yield takeEvery(action.DELETE_POST, deletePostSaga);
 }
 
 export default rootSaga;

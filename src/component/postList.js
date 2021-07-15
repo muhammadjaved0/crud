@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getPosts, deletePost } from "../store/post/action/index";
-import { Button } from "antd";
-import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import { Button, Row, Col, Card, Spin } from "antd";
 import AddPost from "./addPost";
 import EditPost from "./editPost";
 import { DeleteOutlined } from "@ant-design/icons";
@@ -19,7 +16,7 @@ const PostList = () => {
   const handleShow = () => setShow(true);
   useEffect(() => {
     dispatch(getPosts());
-  }, []);
+  }, [dispatch]);
 
   const onDelete = (deleteId) => {
     dispatch(deletePost(deleteId));
@@ -35,11 +32,8 @@ const PostList = () => {
       </Button>
       <AddPost show={show} onCancel={handleClose} />
       {loader ? (
-        <div
-          className="spinner-border spinner-center h-31 w-31 l-50 t-50"
-          role="status"
-        >
-          <span className="sr-only">Loading...</span>
+        <div className="spinner-center">
+          <Spin />
         </div>
       ) : (
         ""
@@ -50,28 +44,20 @@ const PostList = () => {
             return (
               <Col
                 key={post.id}
-                md={post.id % 2 === 0 ? 3 : 4}
-                className="mb-4"
+                md={post.id % 2 === 0 ? 5 : 5}
+                className="mb-4 ml-4"
               >
-                <Card
-                  variant="primary"
-                  className="h-100 shadow bg-white rounded text-left"
-                >
-                  <Card.Body>
-                    <Card.Text className="d-flex justify-content-between">
-                      {post.title}
-                      <div className="float-right">
-                        <EditPost id={post.id} />
-                        <DeleteOutlined
-                          style={{ fontSize: "1.1rem", color: "#FF0000" }}
-                          onClick={() => {
-                            onDelete(post.id);
-                          }}
-                        />
-                      </div>
-                    </Card.Text>
-                    <Card.Text>{post.body}</Card.Text>
-                  </Card.Body>
+                <Card title={post.title}>
+                  <div className="float-right">
+                    <EditPost id={post.id} />
+                    <DeleteOutlined
+                      style={{ fontSize: "1.1rem", color: "#FF0000" }}
+                      onClick={() => {
+                        onDelete(post.id);
+                      }}
+                    />
+                  </div>
+                  <p>{post.body}</p>
                 </Card>
               </Col>
             );

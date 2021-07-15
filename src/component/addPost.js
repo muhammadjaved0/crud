@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Modal } from "antd";
 import Form from "react-bootstrap/Form";
@@ -11,7 +11,7 @@ const AddPost = ({ show, onCancel }) => {
     register,
     watch,
     handleSubmit,
-    formState: { errors },
+    // formState: { errors },
   } = useForm();
 
   const watchFields = watch();
